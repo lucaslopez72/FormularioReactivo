@@ -1,0 +1,161 @@
+
+/* CABECERA */
+.cabecera {
+  --background: #4d8dff;
+  --color: #111111;
+}
+
+ion-title {
+  font-size: 20px;
+}
+
+ion-button {
+  --color: #111111;
+}
+
+/* PESTAÑAS */
+.pestanas {
+  display: flex;
+  background: #4d8dff;
+}
+
+.pestanas a {
+  flex: 1;
+  text-align: center;
+  padding: 18px 8px;
+  color: #333333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pestanas a.activa {
+  border-bottom: 3px solid #111111;
+  color: #111111;
+}
+
+/* CONTENEDOR CENTRAL */
+.contenedor {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* EXPLICACIÓN */
+.descripcion {
+  color: var(--ion-color-medium);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+/* FORMULARIO */
+form {
+  width: 100%;
+}
+
+.campo {
+  margin-bottom: 6px;
+  padding: 12px 16px 5px;
+  background: var(--ion-card-background,
+    var(--ion-item-background, #ffffff));
+}
+
+/* CAMPOS */
+label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid var(--ion-color-medium);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ion-text-color);
+  outline: none;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-bottom: 2px solid #4d8dff;
+}
+
+input::placeholder {
+  color: var(--ion-color-medium);
+}
+
+/* ERRORES */
+.error {
+  color: var(--ion-color-danger);
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+/* BOTÓN REGISTRARSE */
+.registrarse {
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  background: #4d8dff;
+  color: #111111;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.registrarse:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* DESCARGA PDF */
+.zona-pdf {
+  margin-top: 25px;
+}
+
+.exito {
+  text-align: center;
+  color: var(--ion-color-success);
+  font-weight: bold;
+}
+
+.boton-pdf {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  background: #198754;
+  color: white;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .contenedor {
+    padding: 12px;
+  }
+
+  ion-title {
+    font-size: 18px;
+  }
+
+  .pestanas a {
+    font-size: 12px;
+    padding: 15px 5px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+}

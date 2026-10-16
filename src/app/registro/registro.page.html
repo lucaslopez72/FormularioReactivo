@@ -1,0 +1,153 @@
+
+<ion-header>
+
+  <!-- CABECERA AZUL -->
+  <ion-toolbar class="cabecera">
+
+    <ion-title>Registro de Usuario</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="cambiarModoOscuro()">
+        <ion-icon
+          slot="icon-only"
+          [name]="modoOscuro ? 'moon-outline' : 'sunny-outline'">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+  <!-- PESTAÑAS -->
+  <nav class="pestanas">
+
+    <a routerLink="/registro" class="activa">
+      REACTIVO
+    </a>
+
+    <a routerLink="/driven">
+      TEMPLATE-DRIVEN
+    </a>
+
+  </nav>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="contenedor">
+
+    <p class="descripcion">
+      <strong>Reactive Forms:</strong>
+      FormGroup y validadores definidos en TypeScript.
+    </p>
+
+    <form [formGroup]="formulario"
+          (ngSubmit)="enviarFormulario()">
+
+      <!-- NOMBRE -->
+      <div class="campo">
+
+        <label>Nombre completo</label>
+
+        <input
+          type="text"
+          formControlName="nombre"
+          placeholder="Introduce tu nombre">
+
+        <p class="error"
+           *ngIf="formulario.get('nombre')?.touched &&
+                  formulario.get('nombre')?.invalid">
+          El nombre debe tener al menos 3 caracteres.
+        </p>
+
+      </div>
+
+      <!-- CORREO -->
+      <div class="campo">
+
+        <label>Correo Electrónico</label>
+
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Introduce tu correo">
+
+        <p class="error"
+           *ngIf="formulario.get('email')?.touched &&
+                  formulario.get('email')?.invalid">
+          Introduce un correo electrónico válido.
+        </p>
+
+      </div>
+
+      <!-- CONTRASEÑA -->
+      <div class="campo">
+
+        <label>Contraseña</label>
+
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Introduce tu contraseña">
+
+        <p class="error"
+           *ngIf="formulario.get('password')?.touched &&
+                  formulario.get('password')?.invalid">
+          La contraseña debe tener al menos 6 caracteres.
+        </p>
+
+      </div>
+
+      <!-- FECHA DE NACIMIENTO -->
+      <div class="campo">
+
+        <label>Fecha de nacimiento</label>
+
+        <input
+          type="date"
+          formControlName="fechaNacimiento"
+          [max]="fechaMaxima">
+
+        <p class="error"
+           *ngIf="formulario.get('fechaNacimiento')?.touched &&
+                  formulario.get('fechaNacimiento')?.hasError('required')">
+          La fecha de nacimiento es obligatoria.
+        </p>
+
+        <p class="error"
+           *ngIf="formulario.get('fechaNacimiento')?.touched &&
+                  formulario.get('fechaNacimiento')?.hasError('fechaFutura')">
+          La fecha no puede ser posterior a hoy.
+        </p>
+
+      </div>
+
+      <!-- BOTÓN REGISTRARSE -->
+      <button
+        type="submit"
+        class="registrarse"
+        [disabled]="formulario.invalid">
+        REGISTRARSE
+      </button>
+
+    </form>
+
+    <!-- DESCARGAR PDF -->
+    <div class="zona-pdf" *ngIf="datosEnviados">
+
+      <p class="exito">
+        Formulario enviado correctamente
+      </p>
+
+      <button
+        type="button"
+        class="boton-pdf"
+        (click)="descargarPDF()">
+        DESCARGAR PDF
+      </button>
+
+    </div>
+
+  </div>
+
+</ion-content>
